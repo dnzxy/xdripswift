@@ -88,8 +88,6 @@ extension UserDefaults {
         case showClockWhenScreenIsLocked = "showClockWhenScreenIsLocked"
         /// how (and if) the screen should be dimmed when screen lock is enabled
         case screenLockDimmingType = "screenLockDimmingType"
-        /// show the objectives and make them display on the graph? Or just hide it all because it's too complicated to waste time with?
-        case useObjectives = "useObjectives"
         /// show the objective lines in color or grey?
         case urgentHighMarkValue = "urgentHighMarkValue"
         /// high value
@@ -261,6 +259,19 @@ extension UserDefaults {
         
         // Apple Watch
         
+        /// enable the Watch complications
+        case showDataInWatchComplications = "showDataInWatchComplications"
+        /// timestamp that the user acknowledged that the complications will not show in real-time
+        case watchComplicationUserAgreementDate = "watchComplicationUserAgreementDate"
+        /// how many complication updates are remaining for the current day
+        case forceComplicationUpdateInMinutes = "forceComplicationUpdateInMinutes"
+        /// how many complication updates are remaining for the current day
+        case remainingComplicationUserInfoTransfers = "remainingComplicationUserInfoTransfers"
+        /// force a complication update
+        case forceComplicationUpdate = "forceComplicationUpdate"
+        
+        // Calendar Events
+        
         /// create calendar event yes or no
         case createCalendarEvent = "createCalendarEvent"
         
@@ -280,16 +291,13 @@ extension UserDefaults {
         /// should a visual coloured indicator be shown in the calendar title yes or no
         case displayVisualIndicatorInCalendarEvent = "displayVisualIndicator"
         
-        // Contact trick
+        // Contact image
         
-        /// enable contact trick yes or no
-        case enableContactTrick = "enableContactTrick"
-        /// the ID of the contact to be used by the contact trick
-        case contactTrickContactId = "contactTrickContactId"
+        /// enable contact image yes or no
+        case enableContactImage = "enableContactImage"
         /// should trend be displayed yes or no
-        case displayTrendInContactTrick = "displayTrendInContactTrick"
-        /// should the range indicator be displayed, yes or no
-        case rangeIndicatorInContactTrick = "rangeIndicatorInContactTrick"
+        case displayTrendInContactImage = "displayTrendInContactImage"
+        
 
         // Other Settings (not user configurable)
         
@@ -356,6 +364,8 @@ extension UserDefaults {
 
         // development settings
         
+        /// show Developer Settings
+        case showDeveloperSettings = "showDeveloperSettings"
         /// G6 factor1 - for testing G6 scaling
         case G6v2ScalingFactor1 = "G6v2ScalingFactor1"
         /// G6 factor2 - for testing G6 scaling
@@ -783,10 +793,6 @@ extension UserDefaults {
         get {
             //read currentvalue in mgdl
             var returnValue = double(forKey: Key.targetMarkValue.rawValue)
-            // if 0 set to defaultvalue
-            if returnValue == 0.0 {
-                returnValue = ConstantsBGGraphBuilder.defaultTargetMarkInMgdl
-            }
             if !bloodGlucoseUnitIsMgDl {
                 returnValue = returnValue.mgdlToMmol()
             }
@@ -970,17 +976,6 @@ extension UserDefaults {
                 UserDefaults.storeInSharedUserDefaults(value: value, forKey: Key.urgentLowMarkValue.rawValue)
             }
 
-        }
-    }
-    
-    /// should we use objectives for the BG values and graph lines etc?
-    @objc dynamic var useObjectives: Bool {
-        // default value for bool in userdefaults is false, by default we want the objective-based graph to be disabled so as not to scare anybody. They can enable it when they have time to understand it.
-        get {
-            return !bool(forKey: Key.useObjectives.rawValue)
-        }
-        set {
-            set(!newValue, forKey: Key.useObjectives.rawValue)
         }
     }
     
@@ -1581,7 +1576,7 @@ extension UserDefaults {
         }
     }
     
-    // MARK: M5Stack
+    // MARK:M5Stack
 
     /// M5StackBlePassword, used for authenticating xdrip app towards M5Stack
     var m5StackBlePassword: String? {
@@ -1671,6 +1666,65 @@ extension UserDefaults {
     
     // MARK: - Apple Watch
     
+    /// enable the Watch complications, default false
+    @objc dynamic var showDataInWatchComplications: Bool {
+        get {
+            return bool(forKey: Key.showDataInWatchComplications.rawValue)
+        }
+        set {
+            set(newValue, forKey: Key.showDataInWatchComplications.rawValue)
+        }
+    }
+    
+    /// timestamp that the user acknowledged that the complications will not show in real-time
+    var watchComplicationUserAgreementDate: Date? {
+        get {
+            return object(forKey: Key.watchComplicationUserAgreementDate.rawValue) as? Date
+        }
+        set {
+            set(newValue, forKey: Key.watchComplicationUserAgreementDate.rawValue)
+        }
+    }
+    
+    /// every how many minutes should we force a complication update (these updates counts against the 50 times limit per day)
+    var forceComplicationUpdateInMinutes: Int {
+        get {
+            //read currentvalue in mgdl
+            var returnValue = integer(forKey: Key.forceComplicationUpdateInMinutes.rawValue)
+            // if 0 set to defaultvalue
+            if returnValue == 0 {
+                returnValue = ConstantsWidget.defaultForceComplicationRefreshTimeInMinutes
+            }
+            return returnValue
+        }
+        set {
+            set(newValue, forKey: Key.forceComplicationUpdateInMinutes.rawValue)
+        }
+    }
+    
+    /// how many complication updates are remaining for the current day
+    var remainingComplicationUserInfoTransfers: Int? {
+        get {
+            return integer(forKey: Key.remainingComplicationUserInfoTransfers.rawValue)
+        }
+        set {
+            set(newValue, forKey: Key.remainingComplicationUserInfoTransfers.rawValue)
+        }
+    }
+    
+    /// force a complication update
+    @objc dynamic var forceComplicationUpdate: Bool {
+        get {
+            return bool(forKey: Key.forceComplicationUpdate.rawValue)
+        }
+        set {
+            set(newValue, forKey: Key.forceComplicationUpdate.rawValue)
+        }
+    }
+    
+    
+    // MARK: - Calendar Events
+    
     /// create calendar event yes or no, default false
     @objc dynamic var createCalendarEvent: Bool {
         get {
@@ -1741,45 +1795,25 @@ extension UserDefaults {
         }
     }
     
-    // MARK: - Contact trick
+    // MARK: - Contact image
     
-    /// enable the contact trick yes or no, default false
-    @objc dynamic var enableContactTrick: Bool {
+    /// enable the contact image yes or no, default false
+    @objc dynamic var enableContactImage: Bool {
         get {
-            return bool(forKey: Key.enableContactTrick.rawValue)
+            return bool(forKey: Key.enableContactImage.rawValue)
         }
         set {
-            set(newValue, forKey: Key.enableContactTrick.rawValue)
+            set(newValue, forKey: Key.enableContactImage.rawValue)
         }
     }
 
-    /// the ID of the contact to be updated by the contact trick
-    @objc dynamic var contactTrickContactId: String? {
+    /// this is for showing readings on watch via the contact image. Should trend be displayed in the contact, yes or no, default no
+    @objc dynamic var displayTrendInContactImage: Bool {
         get {
-            return string(forKey: Key.contactTrickContactId.rawValue)
+            return bool(forKey: Key.displayTrendInContactImage.rawValue)
         }
         set {
-            set(newValue, forKey: Key.contactTrickContactId.rawValue)
-        }
-    }
-
-    /// this is for showing readings on watch via the contact trick. Should trend be displayed in the contact, yes or no, default no
-    @objc dynamic var displayTrendInContactTrick: Bool {
-        get {
-            return bool(forKey: Key.displayTrendInContactTrick.rawValue)
-        }
-        set {
-            set(newValue, forKey: Key.displayTrendInContactTrick.rawValue)
-        }
-    }
-    
-    /// this is for showing readings on watch via the contact trick. Should the range indicator be displayed, yes or no
-    @objc dynamic var rangeIndicatorInContactTrick: Bool {
-        get {
-            return bool(forKey: Key.rangeIndicatorInContactTrick.rawValue)
-        }
-        set {
-            set(newValue, forKey: Key.rangeIndicatorInContactTrick.rawValue)
+            set(newValue, forKey: Key.displayTrendInContactImage.rawValue)
         }
     }
     
@@ -1921,6 +1955,17 @@ extension UserDefaults {
     
     
     // MARK: - =====  Developer Settings ======
+    
+    /// showDeveloperSettings - default false
+    /// we'll reset this to false anyway every time the app is opened
+    var showDeveloperSettings: Bool {
+        get {
+            return bool(forKey: Key.showDeveloperSettings.rawValue)
+        }
+        set {
+            set(newValue, forKey: Key.showDeveloperSettings.rawValue)
+        }
+    }
     
     /// OSLogEnabled - default false
     var OSLogEnabled: Bool {

@@ -264,28 +264,28 @@ class Texts_SettingsView {
         return NSLocalizedString("settingsviews_showMiniChart", tableName: filename, bundle: Bundle.main, value: "Show the Mini-Chart", comment: "home screen settings, should the mini-chart be shown")
     }()
 
-    static let labelUseObjectives: String = {
-        return NSLocalizedString("settingsviews_useobjectives", tableName: filename, bundle: Bundle.main, value: "Show Objectives in Graph", comment: "home screen settings, use objectives in graph")
-    }()
-
     static let labelUrgentHighValue: String = {
-        return NSLocalizedString("settingsviews_urgentHighValue", tableName: filename, bundle: Bundle.main, value: "Urgent High Value:", comment: "home screen settings, urgent high value")
+        return NSLocalizedString("settingsviews_urgentHighValue", tableName: filename, bundle: Bundle.main, value: "Urgent High Value", comment: "home screen settings, urgent high value")
     }()
     
     static let labelHighValue: String = {
-        return NSLocalizedString("settingsviews_highValue", tableName: filename, bundle: Bundle.main, value: "High Value:", comment: "home screen settings, high value")
+        return NSLocalizedString("settingsviews_highValue", tableName: filename, bundle: Bundle.main, value: "High Value", comment: "home screen settings, high value")
     }()
     
     static let labelTargetValue: String = {
-        return NSLocalizedString("settingsviews_targetValue", tableName: filename, bundle: Bundle.main, value: "Target Value:", comment: "home screen settings, target value")
+        return NSLocalizedString("settingsviews_targetValue", tableName: filename, bundle: Bundle.main, value: "Target Value", comment: "home screen settings, target value")
+    }()
+    
+    static let targetValueMessage: String = {
+        return NSLocalizedString("settingsviews_targetValueMessage", tableName: filename, bundle: Bundle.main, value: "Set to 0 to disable the target", comment: "home screen settings, target value can be disabled by making this value zero")
     }()
     
     static let labelLowValue: String = {
-        return NSLocalizedString("settingsviews_lowValue", tableName: filename, bundle: Bundle.main, value: "Low Value:", comment: "home screen settings, low value")
+        return NSLocalizedString("settingsviews_lowValue", tableName: filename, bundle: Bundle.main, value: "Low Value", comment: "home screen settings, low value")
     }()
     
     static let labelUrgentLowValue: String = {
-        return NSLocalizedString("settingsviews_urgentLowValue", tableName: filename, bundle: Bundle.main, value: "Urgent Low Value:", comment: "home screen settings, urgent low value")
+        return NSLocalizedString("settingsviews_urgentLowValue", tableName: filename, bundle: Bundle.main, value: "Urgent Low Value", comment: "home screen settings, urgent low value")
     }()
     
     static let labelShowTarget: String = {
@@ -624,6 +624,30 @@ class Texts_SettingsView {
         return NSLocalizedString("appleWatchSectionTitle", tableName: filename, bundle: Bundle.main, value: "Apple Watch", comment: "Apple Watch Settings - section title")
     }()
     
+    static let appleWatchShowDataInComplications: String = {
+        return NSLocalizedString("appleWatchShowDataInComplications", tableName: filename, bundle: Bundle.main, value: "Show Values in Complications", comment: "Apple Watch Settings - show values in the complications")
+    }()
+    
+    static let appleWatchShowDataInComplicationsMessage: String = {
+        return String(format: NSLocalizedString("appleWatchShowDataInComplicationsMessage", tableName: filename, bundle: Bundle.main, value: "Please note that Apple Watch complications will not update in real-time. They will only update 2-3 times per hour.\n\nDO NOT rely on values in the complication for treatment decisions.\n\nFor real-time values, open the %@ Watch app.\n\nOnly click 'OK' if you understand and agree.", comment: "Apple Watch Settings - explain why the user needs to confirm that complications will not always show real-time values"), ConstantsHomeView.applicationName)
+    }()
+    
+    static let appleWatchComplicationUserAgreementDate: String = {
+        return NSLocalizedString("appleWatchComplicationUserAgreementDate", tableName: filename, bundle: Bundle.main, value: "User Agreement", comment: "Apple Watch Settings - the date when the user agreed that the complications will not always display real-time values")
+    }()
+    
+    static let appleWatchRemainingComplicationUserInfoTransfers: String = {
+        return NSLocalizedString("appleWatchRemainingComplicationUserInfoTransfers", tableName: filename, bundle: Bundle.main, value: "Remaining Complication Updates", comment: "Apple Watch Developer Settings - amount of forced complication updates still available today")
+    }()
+    
+    static let appleWatchForceManualComplicationUpdate: String = {
+        return NSLocalizedString("appleWatchForceManualComplicationUpdate", tableName: filename, bundle: Bundle.main, value: "Force Complication Update", comment: "Apple Watch Developer Settings - manually force a complication update")
+    }()
+    
+    static let appleWatchForceManualComplicationUpdateMessage: String = {
+        return NSLocalizedString("appleWatchForceManualComplicationUpdateMessage", tableName: filename, bundle: Bundle.main, value: "This will manually force an update of the Apple Watch complications.\n\nIt will use up one of the remaining transfers available for today", comment: "Apple Watch Developer Settings - message explaining how to manually force a complication update")
+    }()
+    
     // MARK: - Calendar Events
     
     static let calendarEventsSectionTitle: String = {
@@ -655,7 +679,7 @@ class Texts_SettingsView {
     }()
 
     static let infoContactsAccessDeniedByUser: String = {
-        return String(format: NSLocalizedString("infoContactsAccessDeniedByUser", tableName: filename, bundle: Bundle.main, value: "You previously denied access to your contacts.\n\nGo to iPhone Settings > %@ > Contacts and enable full access.", comment: "If user has earlier denied access to contacts, and then tries to activate the contact trick, this message will be shown"), ConstantsHomeView.applicationName)
+        return String(format: NSLocalizedString("infoContactsAccessDeniedByUser", tableName: filename, bundle: Bundle.main, value: "You previously denied access to your contacts.\n\nGo to iPhone Settings > %@ > Contacts and enable full access.", comment: "If user has earlier denied access to contacts, and then tries to activate the contact image, this message will be shown"), ConstantsHomeView.applicationName)
     }()
     
     static let infoCalendarAccessWriteOnly: String = {
@@ -678,30 +702,26 @@ class Texts_SettingsView {
         return NSLocalizedString("settingsviews_CalenderIntervalMessage", tableName: filename, bundle: Bundle.main, value: "Minimum interval between two calender events (mins)", comment: "When clicking the interval setting, a pop up asks for minimum number of minutes between two calendar events, this is the pop up message - this is used for setting the interval between two calendar events, Speak readings, Apple Watch")
     }()
         
-    // MARK: - Contact trick
+    // MARK: - Contact image
     
     static let infoContactsAccessRestricted: String = {
-        return String(format: NSLocalizedString("infoContactsAccessRestricted", tableName: filename, bundle: Bundle.main, value: "You cannot give authorization to %@ to access your contacts. This is possibly due to active restrictions such as parental controls being in place.", comment: "If user is not allowed to give any app access to the Contacts, due to restrictions. And then tries to activate the contact trick, this message will be shown"), ConstantsHomeView.applicationName)
+        return String(format: NSLocalizedString("settingsviews_infoContactsAccessRestricted", tableName: filename, bundle: Bundle.main, value: "You cannot give authorization to %@ to access your contacts. This is possibly due to active restrictions such as parental controls being in place.", comment: "If user is not allowed to give any app access to the Contacts, due to restrictions. And then tries to activate the contact image, this message will be shown"), ConstantsHomeView.applicationName)
     }()
     
-    static let contactTrickSectionTitle: String = {
-        return NSLocalizedString("settingsviews_contactTrickSectionTitle", tableName: filename, bundle: Bundle.main, value: "Contact Trick", comment: "Contact Trick - section title")
+    static let contactImageSectionTitle: String = {
+        return NSLocalizedString("settingsviews_contactImageSectionTitle", tableName: filename, bundle: Bundle.main, value: "Contact Image", comment: "Contact Image - section title")
     }()
     
-    static let enableContactTrick: String = {
-        return NSLocalizedString("settingsviews_enableContactTrick", tableName: filename, bundle: Bundle.main, value: "Enable Contact Trick", comment: "Contact Trick Settings - text in row where contact trick is enabled or disabled ")
-    }()
-
-    static let contactTrickContactId: String = {
-        return NSLocalizedString("settingsviews_contactTrickContactId", tableName: filename, bundle: Bundle.main, value: "Contact", comment: "Contact Trick Settings - text in row where user needs to select a contact")
+    static let enableContactImage: String = {
+        return NSLocalizedString("settingsviews_enableContactImage", tableName: filename, bundle: Bundle.main, value: "Create Contact", comment: "Contact Image Settings - text in row where contact image is enabled or disabled ")
     }()
     
-    static let displayTrendInContactTrick: String = {
-        return NSLocalizedString("settingsviews_displayTrendInContactTrick", tableName: filename, bundle: Bundle.main, value: "Display Trend", comment: "Contact Trick Settings - text in row where user needs to say if trend should be displayed or not")
+    static let displayTrendInContactImage: String = {
+        return NSLocalizedString("settingsviews_displayTrendInContactImage", tableName: filename, bundle: Bundle.main, value: "Show Trend", comment: "Contact Image Settings - text in row where user needs to say if trend should be displayed or not")
     }()
     
-    static let rangeIndicatorInContactTrick: String = {
-        return NSLocalizedString("settingsviews_rangeIndicatorInContactTrick", tableName: filename, bundle: Bundle.main, value: "Display Range Indicator", comment: "Contact Trick Settings - text in row where user needs to say if they want the range indicator to be rendered")
+    static let contactImageCreatedByString: String = {
+        return NSLocalizedString("settingsviews_contactImageCreatedByString", tableName: filename, bundle: Bundle.main, value: "Contact automatically created by", comment: "Add a note to the contact so that user knows it was the app that automatically created it")
     }()
 
     // MARK: - Issue Reporting
@@ -794,6 +814,10 @@ class Texts_SettingsView {
     
     static let shareToLoopOnceEvery5Minutes: String = {
         return NSLocalizedString("shareToLoopOnceEvery5Minutes", tableName: filename, bundle: Bundle.main, value: "Share to Loop every 5 mins", comment: "Should loop data be shared only every 5 minutes")
+    }()
+    
+    static let showDeveloperSettings: String = {
+        return NSLocalizedString("showDeveloperSettings", tableName: filename, bundle: Bundle.main, value: "Show Developer Settings", comment: "developer settings, show them or hide them")
     }()
 
     static let nsLog: String = {
