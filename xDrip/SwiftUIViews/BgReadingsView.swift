@@ -23,10 +23,10 @@ struct BgReadingsView: View {
     // MARK: - private @State properties
     
     /// the BgReadings pulled from coredata via BgReadingsAccessor
-    @State private var bgReadings: [(BgReading)] = [(BgReading)]()
+    @State private var bgReadings: [BgReadingSnapshot] = []
     
     /// a filtered version of bgReadings to show only the values only on the selected date
-    @State private var filteredBgReadings: [(BgReading)] = [(BgReading)]()
+    @State private var filteredBgReadings: [BgReadingSnapshot] = []
     
     /// date selected at which we should display BgReadings
     @State private var dateSelected: Date = Date()
@@ -39,7 +39,13 @@ struct BgReadingsView: View {
     @State private var datePickerReset = UUID()
     
     /// selection set for multi-select delete in the List
-    @State private var selectedBgReadings: Set<BgReading> = []
+    @State private var selectedBgReadings: Set<BgReadingSnapshot> = []
+    
+    /// controls the visibility of the scroll-to-top button
+    @State private var showScrollToTopButton = false
+    
+    /// used to rebuild the list at the top without wrapping it in a ScrollViewReader
+    @State private var listReset = UUID()
 
     /// edit mode binding to enable multi-select in the List
     @Environment(\.editMode) private var editMode
@@ -56,64 +62,92 @@ struct BgReadingsView: View {
     /// is true if the user is using mg/dL units (pulled from UserDefaults)
     private let isMgDl: Bool = UserDefaults.standard.bloodGlucoseUnitIsMgDl
     
+    /// row index that needs to appear before the scroll-to-top button is shown
+    private let scrollToTopButtonThresholdIndex = 20
+    
     // MARK: - SwiftUI views
     
     var body: some View {
         NavigationView {
-            VStack {
-                DatePicker(selection: $dateSelected, in: Date().addingTimeInterval(-(Double(numberOfDaysOfBgReadingsToShow) * 24 * 3600))...Date(), displayedComponents: .date) {
-                    
-                    HStack {
-                        Text(Texts_BgReadings.date)
-                        
-                        Spacer()
-                        
-                        Text(dateSelectedDayName)
-                            .foregroundColor(.secondary)
+            List(selection: $selectedBgReadings) {
+                Section {
+                    DatePicker(selection: $dateSelected, in: Date.distantPast...latestSelectableDate, displayedComponents: .date) {
+                        HStack {
+                            Text(Texts_BgReadings.date)
+                            Spacer()
+                            Text(dateSelectedDayName)
+                                .foregroundStyle(Color(.colorSecondary))
+                        }
                     }
+                    .id(self.datePickerReset)
+                    .onAppear { showScrollToTopButton = false }
                 }
-                .padding()
-                .padding(.horizontal)
-                .padding(.bottom, 0)
-                .id(self.datePickerReset)
-                
-                List(selection: $selectedBgReadings) {
-                    // only process the view contents if there is data to show.
-                    if !filteredBgReadings.isEmpty {
-                        ForEach(filteredBgReadings, id: \.self) { bgReading in
-                            NavigationLink(destination: BgReadingsDetailView(bgReading: bgReading)) {
+
+                if !filteredBgReadings.isEmpty {
+                    ForEach(filteredBgReadings, id: \.self) { bgReading in
+                        NavigationLink(destination: BgReadingsDetailView(bgReading: bgReading)) {
+                            HStack {
+                                Image(systemName: "circle.fill")
+                                    .font(.caption2)
+                                    .foregroundStyle(bgRangeIndicatorColor(bgRangeDescription: bgReading.bgRangeDescription()))
+
+                                Text(bgReading.finalValue.mgDlToMmol(mgDl: isMgDl).bgValueRounded(mgDl: isMgDl).bgValueToString(mgDl: isMgDl))
+                                    .foregroundColor(.primary)
+
+                                Text(String(isMgDl ? Texts_Common.mgdl : Texts_Common.mmol))
+                                    .foregroundColor(.secondary)
+
+                                Text(bgReading.slopeArrow())
+                                    .fontWeight(.bold)
+                                    .foregroundColor(.primary)
+
+                                Spacer()
+
                                 HStack {
-                                    visualIndicator(bgRangeDescription: bgReading.bgRangeDescription())
-                                        .font(.system(size: 10))
-                                    
-                                    Text(bgReading.calculatedValue.mgDlToMmol(mgDl: isMgDl).bgValueRounded(mgDl: isMgDl).bgValueToString(mgDl: isMgDl))
-                                        .foregroundColor(.primary)
-                                    
-                                    Text(String(isMgDl ? Texts_Common.mgdl : Texts_Common.mmol))
-                                        .foregroundColor(.secondary)
-                                    
-                                    Text(bgReading.slopeArrow())
-                                        .fontWeight(.bold)
-                                        .foregroundColor(.primary)
-                                    
-                                    Spacer()
-                                    
+                                    BackfilledReadingIndicatorDot(isVisible: bgReading.backfilledAt != nil)
+
                                     Text(bgReading.timeStamp.toStringInUserLocale(timeStyle: .short, dateStyle: .none))
                                         .foregroundColor(.secondary)
                                 }
-                                .foregroundColor(.white)
+                            }
+                            .foregroundColor(.white)
+                        }
+                        .onAppear {
+                            if let index = filteredBgReadings.firstIndex(of: bgReading), index >= scrollToTopButtonThresholdIndex {
+                                showScrollToTopButton = true
                             }
                         }
-                        .onDelete(perform: deleteBgReading)
                     }
-                    else {
-                        // this is shown when there is no data for the selected date
-                        Text(Texts_BgReadings.noReadingsToShow)
-                    }
+                    .onDelete(perform: deleteBgReading)
+                } else {
+                    Text(Texts_BgReadings.noReadingsToShow)
                 }
             }
+            .id(listReset)
+            .overlay(alignment: .bottomTrailing) {
+                if showScrollToTopButton {
+                    Button {
+                        showScrollToTopButton = false
+                        listReset = UUID()
+                    } label: {
+                        Image(systemName: "arrow.up")
+                            .font(.title3.weight(.bold))
+                            .foregroundStyle(.yellow)
+                            .frame(width: 48, height: 48)
+                            .background(Color(.secondarySystemGroupedBackground), in: Circle())
+                    }
+                    .buttonStyle(.plain)
+                    .shadow(color: .black.opacity(0.25), radius: 10, x: 0, y: 4)
+                    .padding(.trailing, 20)
+                    .padding(.bottom, 20)
+                }
+            }
+            .animation(.easeInOut(duration: 0.2), value: showScrollToTopButton)
+            .listStyle(.insetGrouped)
             .navigationTitle(Texts_BgReadings.glucoseReadingsTitle)
             .onChange(of: dateSelected, perform: { value in
+                showScrollToTopButton = false
+
                 // update the filtered array with the newly selected date
                 filteredBgReadings = bgReadings.filter { Calendar.current.compare($0.timeStamp, to: dateSelected, toGranularity: .day) == .orderedSame}
                 
@@ -156,7 +190,7 @@ struct BgReadingsView: View {
         if let fromDate: Date = Calendar.current.date(byAdding: .day, value: -numberOfDaysOfBgReadingsToShow, to: dateSelected)?.toMidnight() {
             
             // get 'numberOfDaysOfBgReadingsToShow' days worth of BG Readings from coredata
-            bgReadings = bgReadingsAccessor.getLatestBgReadings(limit: nil, fromDate: fromDate, forSensor: nil, ignoreRawData: false, ignoreCalculatedValue: false)
+            bgReadings = bgReadingsAccessor.getLatestBgReadingSnapshots(limit: nil, fromDate: fromDate, forSensor: nil, ignoreRawData: false, ignoreCalculatedValue: false)
             
             // create a filtered array to only show bg readings for the date selected
             filteredBgReadings = bgReadings.filter { Calendar.current.compare($0.timeStamp, to: dateSelected, toGranularity: .day) == .orderedSame}
@@ -176,7 +210,7 @@ struct BgReadingsView: View {
         // get the index to be deleted from filteredBgReadings
         let index = offsets[offsets.startIndex]
         
-        // get the actual BgReading from filteredBgReadings
+        // get the actual BgReading snapshot from filteredBgReadings
         let bgReadingToDelete =  filteredBgReadings[index]
         
         // get the timestamp so that we can match it to the main (unfiltered) array
@@ -191,7 +225,7 @@ struct BgReadingsView: View {
         bgReadings.removeAll(where: { $0.timeStamp == timestampOfBgReadingToDelete })
         
         // delete the BgReading from coredata
-        bgReadingsAccessor.delete(bgReading: bgReadingToDelete)
+        bgReadingsAccessor.delete(bgReadingObjectID: bgReadingToDelete.objectID)
         
         // delete the BgReading from Nightscout (if it exists)
         nightscoutSyncManager.deleteBgReadingFromNightscout(timeStampOfBgReadingToDelete: timestampOfBgReadingToDelete)
@@ -222,7 +256,7 @@ struct BgReadingsView: View {
             bgReadings.removeAll(where: { $0.timeStamp == timestampOfBgReadingToDelete })
 
             // delete from Core Data
-            bgReadingsAccessor.delete(bgReading: bgReadingToDelete)
+            bgReadingsAccessor.delete(bgReadingObjectID: bgReadingToDelete.objectID)
 
             // delete from Nightscout
             nightscoutSyncManager.deleteBgReadingFromNightscout(timeStampOfBgReadingToDelete: timestampOfBgReadingToDelete)
@@ -235,29 +269,18 @@ struct BgReadingsView: View {
         editMode?.wrappedValue = .inactive
     }
     
-    /// returns the visual indicator symbol based on the BgRangeDescription from a BgReading
-    /// - parameters:
-    ///   - bgRangeDescription: an enum as defined in ConstantsCalendar
-    /// - returns:
-    ///   - a Text view containing a string (in this case a coloured symbol)
-    private func visualIndicator(bgRangeDescription: BgRangeDescription) -> Text {
-        
-        var visualIndicator = ""
-        
-        // configure the indicator based on the relevant range colour/symbol
-        // copied from CalendarManager.createCalendarEvent()
+    /// Returns the colour for the small dot shown beside each glucose reading.
+    /// The reading still owns the range decision, while the SwiftUI row draws the
+    /// symbol rather than storing a marker inside the text.
+    private func bgRangeIndicatorColor(bgRangeDescription: BgRangeDescription) -> Color {
         switch bgRangeDescription {
         case .inRange:
-            visualIndicator = ConstantsCalendar.visualIndicatorInRange
+            return ConstantsGlucoseChart.glucoseInRangeColor
         case .notUrgent:
-            visualIndicator = ConstantsCalendar.visualIndicatorNotUrgent
+            return ConstantsGlucoseChart.glucoseNotUrgentRangeColor
         case .urgent:
-            visualIndicator = ConstantsCalendar.visualIndicatorUrgent
+            return ConstantsGlucoseChart.glucoseUrgentRangeColor
         }
-        
-        // return the indicator symbol
-        return Text(visualIndicator)
-        
     }
     
     /// this updates the state variable with the day name string (in user locale) based on the date passed to it
@@ -268,10 +291,28 @@ struct BgReadingsView: View {
         
         dateSelectedDayName = dateFormatter.string(from: date).capitalized
     }
+
+    /// Last selectable timestamp for the date-only picker.
+    /// This keeps tomorrow disabled without making today's selected value invalid by a few milliseconds.
+    private var latestSelectableDate: Date {
+        Calendar.current.date(byAdding: DateComponents(day: 1, second: -1), to: Date().toMidnight()) ?? Date()
+    }
 }
 
 struct BgReadingsView_Previews: PreviewProvider {
     static var previews: some View {
         BgReadingsView()
+    }
+}
+
+struct BackfilledReadingIndicatorDot: View {
+    var isVisible: Bool = true
+
+    var body: some View {
+        Circle()
+            .foregroundStyle(isVisible ? ConstantsUI.backfilledReadingIndicatorDotColor : .clear)
+            .accessibilityLabel(Texts_BgReadings.backfilled)
+            .accessibilityHidden(!isVisible)
+            .frame(width: ConstantsUI.backfilledReadingIndicatorDotSize, height: ConstantsUI.backfilledReadingIndicatorDotSize)
     }
 }

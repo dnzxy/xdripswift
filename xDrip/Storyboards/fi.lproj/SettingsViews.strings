@@ -1,4 +1,12 @@
 "settingsviews_settingstitle" = "Asetukset";
+"settingsviews_glucoseDisplaySectionTitle" = "Glukoosinäkymä";
+"settingsviews_glucoseRangesSectionTitle" = "Glukoosialueet";
+"settingsviews_alertsAndNotificationsSectionTitle" = "Hälytykset ja ilmoitukset";
+"settingsviews_sharingAndServicesSectionTitle" = "Jakaminen ja palvelut";
+"settingsviews_osAidLoopShareSectionTitle" = "OS-AID-jakaminen";
+"settingsviews_issueReportSectionTitle" = "Ongelmaraportti";
+"settingsviews_appBannerVersion" = "Versio %@";
+"settingsviews_appInstalledSince" = "Asennettu";
 "settingsviews_sectiontitleNotifications" = "Yleinen";
 "settingsviews_sectiontitlehomescreen" = "Kotinäyttö";
 "settingsviews_selectbgunit" = "Verensokeriyksikkö";
@@ -9,30 +17,34 @@
 "settingsviews_masterorfollower" = "Isäntä vai seuraaja";
 "settingsviews_master" = "Isäntä";
 "settingsviews_follower" = "Seuraaja";
-"settingsviews_showReadingInNotification" = "Näytä lukema ilmoituksissa";
-"settingsviews_labelShowReadingInAppBadge" = "Näytä lukema kuvakkeessa";
-"settingsviews_multipleAppBadgeValueWith10" = "Kerrotaanko kuvake lukemat 10:llä";
+"settingsviews_showReadingInNotification" = "Glukoosi-ilmoitukset";
+"settingsviews_labelShowReadingInAppBadge" = "Apin merkki";
+"settingsviews_multipleAppBadgeValueWith10" = "Apin merkki x10";
 "settingsviews_sectiontitletransmitter" = "Lähetin";
 "settingsviews_transmittertype" = "Lähettimen tyyppi";
 "settingsviews_transmitterid" = "Lähettimen ID";
 "settingsviews_transmitterid_text_for_button" = "Lähettimen ID";
 "settingsviews_givetransmitterid" = "Anna lähetettimen ID";
-"settingsviews_nonfixedtransmitter" = "Käytä monipistekalibrointia";
+"settingsviews_nonfixedtransmitter" = "Monipistekalibrointi";
 "settingsviews_labelNonFixed" = "Monipistekalibrointi";
 "settingsviews_sectiontitlealerting" = "Hälytys";
 "settingsviews_row_alert_types" = "Hälytystyypit";
 "settingsviews_row_alerts" = "Hälytykset";
+"settingsviews_volume_tests_section_title" = "Testaa hälytyksen äänenvoimakkuus";
+"settingsviews_alert_types_section_footer" = "Hälytystyypit määrittävät, miten hälytykset toimivat, mukaan lukien ääni, värinä, torkku ja mykistyksen ohitus.";
+"settingsviews_alerts_section_footer" = "Hälytykset määrittävät, milloin sovelluksen tulee ilmoittaa glukoositasoista, puuttuvista lukemista ja muista tilanteista.";
 "settingsviews_sectiontitlehealthkit" = "Apple Health";
-"settingsviews_healthkit" = "Kirjoita data Apple Healthiin";
-"settingsviews_sectiontitledexcomshareupload" = "Dexcom Share Upload";
-"settingsviews_uploadReadingstoDexcomShare" = "Lähetä Dexcom Share palveluun";
+"settingsviews_healthkit" = "Kirjoita Apple Healthiin";
+"settingsviews_sectiontitledexcomshareupload" = "Dexcom Share";
+"settingsviews_uploadReadingstoDexcomShare" = "Lähetä";
 "settingsviews_dexcomShareUploadSerialNumber" = "Vastaanottimen sarjanumero";
-"settingsviews_useUSDexcomShareurl" = "Käytä Dexcom US palvelimia";
+"settingsviews_useUSDexcomShareurl" = "US-palvelimet";
 "settingsviews_dexcomShareAccountName" = "Käyttäjätunnus";
 "settingsviews_giveDexcomShareAccountName" = "Anna Dexcom Sharen käyttäjätunnus";
 "settingsviews_giveDexcomSharePassword" = "Anna Dexcom Sharen salasana";
 "settingsviews_givedexcomShareUploadSerialNumber" = "Anna Dexcom vastaanottimen sarjanumero";
 "settingsviews_sectiontitlenightscout" = "Nightscout";
+"settingsviews_nightscoutUploadOptionsSectionTitle" = "Lähetysasetukset";
 "settingsviews_nightscoutEnabled" = "Ota Nightscout käyttöön";
 "settingsviews_nightscoutUrl" = "URL";
 "settingsviews_useSchedule" = "Käytä lähetysaikataulua";
@@ -43,31 +55,27 @@
 "editScheduleTimePickerSubtitle" = "Muuta: ";
 "timeScheduleViewTitle" = "Päällä/pois aikataulu ";
 "uploadSensorStartTime" = "Lähetä sensorin aloitusaika";
-"testUrlAndAPIKey" = "Testaa Nightscout URL ja API_SECRET";
-"settingsviews_sectiontitlespeak" = "Ääni";
-"settingsviews_speakBgReadings" = "Puhu vs. lukemat";
+"testUrlAndAPIKey" = "Testaa yhteys";
+"settingsviews_speakBgReadings" = "Puhu glukoosi";
 "settingsviews_speakBgReadingslanguage" = "Kieli";
 "settingsviews_speakreadingslanguageselection" = "Valitse kieli";
 "settingsviews_speakTrend" = "Puhu suunta";
 "settingsviews_speakDelta" = "Puhu erotus";
 "settingsviews_IntervalTitle" = "Intervalli";
-"settingsviews_IntervalMessage" = "Kahden lukeman välinen vähimmäisväli minuutteina";
+"settingsviews_IntervalMessage" = "Kahden lukeman välinen vähimmäisväli";
 "settingsviews_sectiontitleAbout" = "%@ info";
 "settingsviews_Version" = "Versio";
 "settingsviews_license" = "Lisenssi";
-"settingsviews_build" = "Build";
 "m5stack_settingsviews_settingstitle" = "M5 Stack asetukset";
 "m5stack_settingsviews_textColor" = "Tekstiväri";
 "m5stack_settingsviews_backGroundColor" = "Taustaväri";
 "m5stack_settingsviews_sectiontitlebluetooth" = "Bluetooth";
 "m5stack_settingsviews_giveBluetoothPassword" = "Anna bluetooth salasana";
 "m5stack_settingsviews_brightness" = "Näytön kirkkaus";
-"appleWatchSectionTitle" = "Apple Watch";
-"createCalendarEvent" = "Luo kalenteritapahtumat";
 "calenderId" = "Käytettävä kalenteri";
-"settingsviews_displayTrendInCalendarEvent" = "Näytä suunta";
-"displayUnitInCalendarEvent" = "Näytä yksikkö";
-"displayDeltaInCalendarEvent" = "Näytä erotus";
+"settingsviews_displayTrendInCalendarEvent" = "Suunta";
+"displayUnitInCalendarEvent" = "Yksikkö";
+"displayDeltaInCalendarEvent" = "Erotus";
 "infoCalendarAccessDeniedByUser" = "Olet aiemmin kieltänyt pääsyn kalenteriin.\n\nOttaaksesi sen käyttöön, siirry laitteen asetuksiin, tietosuojaan, kalentereihin ja ota käyttöön.";
 "infoCalendarAccessRestricted" = "Et voi antaa %@:lle valtuutusta käyttää kalenteriasi. Tämä johtuu mahdollisesti aktiivisista rajoituksista, kuten vanhempien valvonnasta";
 "sectionTitleTrace" = "Ongelmien raportointi";
@@ -78,17 +86,16 @@
 "failedToSendEmail" = "Sähköpostin lähetys epäonnistui";
 "volumeTestSoundPlayerExplanation" = "Hälytysääni toistetaan nyt samalla äänenvoimakkuudella, jota käytetään hälytystyyppiin, jossa 'Ohita mykistys' = Päällä\n\n(Käytetään kaikkiin hälytyksiin paitsi 'puuttuva lukema' hälytyksiin, joissa käytetään aina iOS-äänenvoimakkuutta)\n\nMuuta äänenvoimakkuutta äänenvoimakkuuspainikkeilla ja paina OK, kun olet valmis.";
 "volumeTestiOSSoundExplanation" = "Hälytysääni toistetaan nyt samalla äänenvoimakkuudella, jota käytetään hälytystyyppiin, jossa 'Ohita mykistys' = Pois\n\n(Käytetään myös 'puuttuva lukuma' hälytysten yhteydessä, jotka käyttävät iOS-äänenvoimakkuutta)\n\nPysäytä ääni painamalla yhtä äänenvoimakkuuspainikkeista, muuta sitten äänenvoimakkuus haluamallesi äänenvoimakkuuspainikkeella ja testaa uudelleen.";
-"volumeTestSoundPlayer" = "Testaa ääni (kun mykistys on ohitettu)";
-"volumeTestiOSSound" = "Testaa ääni (nykyinen iPhone voimakkuus)";
+"volumeTestSoundPlayer" = "Kun hiljainen tila on käytössä";
+"volumeTestiOSSound" = "Kun hiljainen tila on pois käytöstä";
 "debugLevel" = "Sisällytä debug taso";
 "warningChangeFromMasterToFollower" = "Vaihtaminen masterista seuraajaan pysäyttää nykyisen anturin. Haluatko jatkaa?";
 "nightscoutPort" = "Portti";
-"settingsviews_showcoloredobjectives" = "Näytä värilliset tavoiteviivat ";
-"settingsviews_showtarget" = "Näytä kohdeviiva";
+"settingsviews_showcoloredobjectives" = "Värilliset viivat";
+"settingsviews_showtarget" = "Kohdeviiva";
 "settingsviews_targetValue" = "Tavoitearvo";
 
 /// deloper settings, row title for 'Smooth Libre Values?'
-"smoothLibreValues" = "Tasaiset Libre-arvot";
 
 /// deloper settings, row title for OSLog - with OSLog enabled, a developer can view log information as explained here https://developer.apple.com/documentation/os/oslog
 "oslog" = "OSLog";
@@ -96,8 +103,12 @@
 /// deloper settings, row title for NSLog - with NSLog enabled, a developer can view log information as explained here https://github.com/JohanDegraeve/xdripswift/wiki/NSLog
 "nslog" = "NSLog";
 
-/// Developer Settings, section title
-"developerSettings" = "Kehittäjäasetukset";
+/// Advanced Settings, section title
+"developerSettings" = "Lisäasetukset";
+"showDeveloperSettings" = "Näytä lisäasetukset";
+"preferSensorCountdown" = "Suosi sensorin lähtölaskentaa";
+"settingsviews_homeScreenSensorLifetimeSectionTitle" = "Sensorin käyttöaika";
+"settingsviews_homeScreenSensorLifetimeSectionFooter" = "Määrittää, näytetäänkö sensorin käyttöaika kuluneena aikana vai lähtölaskentana iPhonessa ja Apple Watchissa.";
 
 /// statistics settings, how many days to use for calculations
 "settingsviews_daysToUseStatisticsMessage" = "Enimmäispäivät tilastojen laskemiseen?\n\n(0 laskeaksesi tänään keskiyöstä lähtien)    ";
@@ -106,7 +117,7 @@
 "settingsviews_sectiontitlestatistics" = "Tilastot";
 
 /// statistics settings, use IFCC method for HbA1c?
-"settingsviews_useIFCCA1C" = "Näytä HbA1c mmol/mol muodossa";
+"settingsviews_useIFCCA1C" = "HbA1c in mmols/mol";
 
 /// statistics settings, show statistics on home screen
 "settingsviews_showStatistics" = "Näytä tilastot";
@@ -115,31 +126,27 @@
 "settingsviews_daysToUseStatisticsTitle" = "Päiviä laskutoimitukseen";
 
 /// general settings, should the clock also be displayed when the screen is locked?
-"settingsviews_showClockWhenScreenIsLocked" = "Näytetäänkö kello kun näyttö on lukittuna";
+"settingsviews_showClockWhenScreenIsLocked" = "Lukitusnäytön kello";
 
 /// general settings, should the online help be translated automatically if needed
-"settingsviews_translateOnlineHelp" = "Käännä automaattisesti";
+"settingsviews_translateOnlineHelp" = "Käännä dokumentaatio";
 
 /// home screen settings, should the main glucose chart screen be allowed?
-"settingsviews_allowScreenRotation" = "Salli kaavion kierto";
+"settingsviews_allowScreenRotation" = "Kaavion kierto";
 
 /// help settings, section title
-"settingsviews_sectiontitlehelp" = "Ohje ja dokumentaatio";
 
-/// Calendar Events Settings - section title
-"calendarEventsSectionTitle" = "Kalenteritapahtumat";
 
 /// help settings, open the online help
 "settingsviews_showOnlineHelp" = "Avaa online ohje";
 
 /// web oop settings in bluetooth peripheral view : enabled or not
-"settingsviews_webooptransmitter" = "Käytä lähettimen algoritmiä";
+"settingsviews_webooptransmitter" = "Lähettimen algoritmi";
 
 /// weboop settings, title of the dialogs where user can select between xdrip or transmitter algorithm
 "settingsviews_labelWebOOP" = "xDrip tai lähetin algoritmi";
 
 /// help settings, restart needed
-"settingsviews_restartNeeded" = "(Uudelleenkäynnistys vaaditaan)";
 
 /// When clicking the threshold setting, a pop up asks for the number of units under which a bolus should be considered a micro-bolus
 "settingsviews_smallBolusTreatmentThreshold" = "Mikroboluksen kynnys";
@@ -153,8 +160,6 @@
 /// treatments settings, show the treatments on main chart
 "settingsviews_showTreatments" = "Näytä hoidot kaaviossa";
 
-/// Button to export all data
-"settingsviews_housekeeperExportAllData" = "Vie kaikki tiedot";
 
 /// Housekeeper settings, section title
 "settingsviews_sectionTitleHousekeeper" = "Tiedon hallinta";
@@ -163,7 +168,7 @@
 "settingsviews_housekeeperRetentionPeriodMessage" = "Montako päivää tietoja säilytetään (90-365)?\n\n(suositus: 90 päivää)";
 
 /// Housekeeper retention period, for how long to store data
-"settingsviews_housekeeperRetentionPeriod" = "Säilytysaika (päivää)";
+"settingsviews_housekeeperRetentionPeriod" = "Säilytysaika";
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 /////   Translation needed - remove this header after translation                       /////
@@ -173,7 +178,7 @@
 "Select Time" = "Select Time";
 
 /// transmitter settings, to explain that the reset option only works for certain transmitters
-"settingsviews_resetDexcomTransmitterMessage" = "\nThis option will attempt to reset the transmitter on the next connection.\n\nNote that this will only work for G5 transmitters, very early G6 and all Anubis G6 transmitters.\n\nIt will NOT work for normal G6 or ONE transmitters.";
+"settingsviews_resetDexcomTransmitterMessage" = "This option will attempt to reset the transmitter on the next connection.\n\nNote that this will only work for G5 transmitters, very early G6 and all Anubis G6 transmitters.\n\nIt will NOT work for normal G6 or ONE transmitters.";
 
 /// data source settings, keep-alive mode is set to aggressive
 "settingsviews_followerKeepAliveTypeAggressiveMessage" = "Background keep-alive is set to aggressive.\n\nWhen the app is not on screen, we will aggressively attempt to keep it running for you in the background so that BG updates are received and alarms can be triggered.\n\nThis mode has a very noticeable impact on the battery of your device and should only be used if absolutely necessary.";
@@ -200,7 +205,7 @@
 "settingsviews_timeInRangeTypeStandardRange" = "Standard Range";
 
 /// statistics settings, the type of time in range selected
-"settingsviews_labelTimeInRangeType" = "Time In Range Type";
+"settingsviews_labelTimeInRangeType" = "Time In Range";
 
 /// data source settings, enable background keep alive
 "settingsviews_labelfollowerKeepAliveType" = "Background Keep-alive";
@@ -211,7 +216,6 @@
 /// treatments settings, offset the carb treatments on main chart
 
 /// When clicking the interval setting, a pop up asks for minimum number of minutes between two calendar events, this is the pop up message - this is used for setting the interval between two calendar events, Speak readings, Apple Watch
-"settingsviews_CalenderIntervalMessage" = "Minimum interval between two calender events (mins)";
 
 /// When user creates new loopdelay, with a timestamp that already exists - this is the warning text
 "warningLoopDelayAlreadyExists" = "There is already a loopDelay for this time.";
@@ -220,7 +224,7 @@
 "settingsviews_timeInRangeTypeUserDefinedRange" = "User Range";
 
 /// CGM data source settings, section title
-"settingsviews_sectionTitleDataSource" = "CGM Data Source";
+"settingsviews_sectionTitleDataSource" = "Tietolähde";
 
 /// follower settings, pop up that asks user to enter their username
 "settingsviews_enterUsername" = "Enter your username";
@@ -229,13 +233,12 @@
 "settingsviews_nightscoutNotEnabledRowText" = "Disabled";
 
 /// data source settings, keep-alive mode is set to use an external heartbeat
-"settingsviews_followerKeepAliveTypeHeartbeatMessage" = "Background keep-alive is set to use an external heartbeat. ❤️\n\nWhen the app is not on screen, the external heartbeat will wake it up in the background so that BG updates are received and alarms can be triggered.\n\nMake sure you add a valid heartbeat device in the Bluetooth screen.\n\nThis mode has very little impact on the battery of your device but will only work if a valid heartbeat is running.";
+"settingsviews_followerKeepAliveTypeHeartbeatMessage" = "Background keep-alive is set to use an external heartbeat.\n\nWhen the app is not on screen, the external heartbeat will wake it up in the background so that BG updates are received and alarms can be triggered.\n\nMake sure you add a valid heartbeat device in the Bluetooth screen.\n\nThis mode has very little impact on the battery of your device but will only work if a valid heartbeat is running.";
 
 /// When enabled, readings will not be reading to shared user defaults (for loop)
 "suppressLoopShare" = "Suppress Loop Share";
 
 /// When clicking the event interval setting, a pop up asks for minimum number of minutes between two events, this is the pop up message - this is used for setting the interval between two calendar events
-"settingsviews_CalenderIntervalTitle" = "Event Interval";
 
 /// data source settings, enable Nightscout in the Nightscout section
 "settingsviews_nightscoutNotEnabled" = "Nightscout is disabled\n\nTo upload BG values to Nightscout, you must enable it in the Nightscout section.";
@@ -250,10 +253,11 @@
 "settingsviews_libreLinkUpReAcceptNeeded" = "Need to accept terms";
 
 /// When clicking the interval setting, a pop up asks for minimum number of minutes between two bg announcements, this is the pop up message - this is used for setting the interval between two readings in BG announcements, Speak readings, Apple Watch
-"settingsviews_SpeakIntervalMessage" = "Minimum interval between two voice announcements (mins)";
+"settingsviews_SpeakIntervalMessage" = "Minimum interval between two voice announcements";
 
 /// home screen settings, should the mini-chart be shown
 "settingsviews_showMiniChart" = "Show Mini-Chart";
+"settingsviews_showSensorNoiseOnChart" = "Show Sensor Noise";
 
 /// data source settings, the name of the person we are following
 "settingsviews_followerPatientName" = "Patient Name";
@@ -292,16 +296,207 @@
 "settingsviews_enterPassword" = "Enter your password";
 
 /// The user needs to update their calendar permissions
-"infoCalendarAccessWriteOnly" = "You cannot use Calendar Events until you update the calendar access permission from 'Add Events Only' to 'Full Access'.\n\nGo to iPhone Settings > Apps > %@ > Calendars and select 'Full Access'.";
 
 /// data source settings, keep-alive mode is set to normal
 "settingsviews_followerKeepAliveTypeNormalMessage" = "Background keep-alive is set to normal operation.\n\nWhen the app is not on screen, we will attempt to keep it running for you in the background so that BG updates are received and alarms can be triggered.\n\nThis mode has a noticeable impact on the battery of your device.";
 
 /// home screen settings, should the screen be dimmed when the screen is locked
-"settingsviews_screenLockDimmingTypeWhenScreenIsLocked" = "Dim Screen when Locked";
+"settingsviews_screenLockDimmingTypeWhenScreenIsLocked" = "Lukitusnäytön himmennys";
 
 /// Should loop data be shared only every 5 minutes
-"shareToLoopOnceEvery5Minutes" = "Share with OS-AID every 5 mins";
 
 /// screen dimming is very dark
 "settingsviews_screenLockDimmingTypeVeryDark" = "Very Dark";
+
+// MARK: - Automatic Housekeeping
+"settingsviews_dataManagementStorageInfo" = "Tallennustiedot";
+"settingsviews_dataManagementManageData" = "Hallitse tietoja";
+"settingsviews_dataManagementDataRetention" = "Tietojen säilytys";
+"settingsviews_dataManagementDataDeletion" = "Tietojen poisto";
+"settingsviews_dataManagementImportData" = "Tuo tietoja";
+"settingsviews_dataManagementLastHousekeeping" = "Viimeisin siivous";
+"settingsviews_storageInfoDatabase" = "Tietokanta";
+"settingsviews_storageInfoDatabaseSize" = "Tietokannan koko";
+"settingsviews_storageInfoTrackedRecords" = "Lasketut tietueet";
+"settingsviews_storageInfoDevices" = "Laitteet";
+"settingsviews_storageInfoSensors" = "Sensorit";
+"settingsviews_storageInfoRetentionFooter" = "Määritetty tietojen säilytysaika on %d päivää.";
+"settingsviews_storageInfoHistory" = "Tallennettu historia";
+"settingsviews_storageInfoEarliestRecord" = "Vanhin tietue";
+"settingsviews_storageInfoLatestRecord" = "Uusin tietue";
+"settingsviews_storageInfoCheckingStatus" = "Tarkistetaan tallennustilaa…";
+"settingsviews_nightscoutImportRetentionFooter" = "Tuonti rajoittuu %d päivän säilytysaikaan. Siivous poistaa vanhemmat tiedot.";
+"settingsviews_cleanDataAutomaticHousekeeping" = "Automaattinen siivous";
+"settingsviews_cleanDataKeepHistoricalData" = "Säilytä historiatiedot";
+"settingsviews_cleanDataLastHousekeepingCompleted" = "Viimeksi valmis";
+"settingsviews_cleanDataLastHousekeepingResult" = "Viimeisin tulos";
+"settingsviews_cleanDataNoHousekeepingRequired" = "Siivousta ei tarvita";
+"settingsviews_cleanDataAutomaticHousekeepingFooter" = "Suoritetaan enintään kerran päivässä, kun sovellus avataan. Vanhemmat lukemat, hoidot ja käyttämättömät kalibroinnit poistetaan paikallisesti.";
+"settingsviews_cleanDataAutomaticHousekeepingDisabledFooter" = "Historiatiedot poistetaan vain manuaalisesti Tietojen poistossa.";
+"settingsviews_cleanDataOneHousekeepingRecordRemoved" = "%@ tietue poistettu";
+"settingsviews_cleanDataHousekeepingRecordsRemoved" = "%@ tietuetta poistettu";
+
+// MARK: - Clean Data
+"settingsviews_cleanData" = "Siivoa tiedot";
+"settingsviews_cleanDataStorageUsed" = "Käytetty tila";
+"settingsviews_cleanDataStoredData" = "Tallennetut tiedot";
+"settingsviews_cleanDataBgReadings" = "Glukoosilukemat";
+"settingsviews_cleanDataTreatments" = "Hoidot";
+"settingsviews_cleanDataCalibrations" = "Kalibroinnit";
+"settingsviews_cleanDataSelectData" = "Poistettavat tiedot";
+"settingsviews_cleanDataCleanupMethod" = "Siivoustapa";
+"settingsviews_cleanDataKeepRecent" = "Säilytä uusimmat";
+"settingsviews_cleanDataDateRange" = "Aikaväli";
+"settingsviews_cleanDataDeleteAll" = "Poista kaikki";
+"settingsviews_cleanDataKeep" = "Säilytä";
+"settingsviews_cleanDataFrom" = "Alkaen";
+"settingsviews_cleanDataUntil" = "Asti";
+"settingsviews_cleanDataOlderDataFooter" = "Vanhat tiedot poistetaan. Uudet tiedot säilytetään.";
+"settingsviews_cleanDataInclusiveDatesFooter" = "Molemmat päivät sisältyvät.";
+"settingsviews_cleanDataDeleteAllFooter" = "Kaikki valitut tiedot poistetaan.";
+"settingsviews_cleanDataContinue" = "Jatka";
+"settingsviews_cleanDataReviewFooter" = "Näet yhteenvedon ennen poistamista.";
+"settingsviews_cleanDataPermanentDeletion" = "Pysyvä tietojen poisto";
+"settingsviews_cleanDataCannotUndo" = "Tätä ei voi kumota.";
+"settingsviews_cleanDataUnusedCalibrations" = "Käyttämättömät kalibroinnit";
+"settingsviews_cleanDataEarliestStoredData" = "Vanhin tallennettu tieto";
+"settingsviews_cleanDataDataToDelete" = "Poistettavat tiedot";
+"settingsviews_cleanDataEnterCode" = "Syötä tämä kuusinumeroinen koodi";
+"settingsviews_cleanDataSixDigitCode" = "Kuusinumeroinen koodi";
+"settingsviews_cleanDataConfirmDelete" = "VAHVISTA POISTO";
+"settingsviews_cleanDataSuccessfullyDeleted" = "Tiedot poistettu";
+"settingsviews_cleanDataCompleted" = "Valmis";
+"settingsviews_cleanDataBgReadingsDeleted" = "Glukoosilukemat poistettu";
+"settingsviews_cleanDataTreatmentsDeleted" = "Hoidot poistettu";
+"settingsviews_cleanDataStorageBefore" = "Tila ennen";
+"settingsviews_cleanDataStorageAfter" = "Tila jälkeen";
+"settingsviews_cleanDataCleanupSummary" = "Siivouksen yhteenveto";
+"settingsviews_cleanDataDatabaseReuseFooter" = "Tietokanta voi säilyttää kokonsa ja käyttää vapautuneen tilan uudelleen.";
+"settingsviews_cleanDataCheckingStatus" = "Tarkistetaan tietoja…";
+"settingsviews_cleanDataCountingStatus" = "Lasketaan tietoja…";
+"settingsviews_cleanDataDeletingStatus" = "Poistetaan tietoja pysyvästi…\nPidä sovellus avoinna.";
+"settingsviews_cleanDataInvalidDateRangeError" = "Alkupäivän on oltava ennen loppupäivää.";
+"settingsviews_cleanDataNoSelectionError" = "Valitse vähintään yksi tietotyyppi.";
+"settingsviews_cleanDataNoMatchingDataError" = "Aikavälillä ei ole valittuja tietoja.";
+"settingsviews_cleanDataChangedError" = "Tiedot muuttuivat yhteenvedon jälkeen. Tarkista ne uudelleen.";
+"settingsviews_cleanDataDeleteFailedError" = "Valittuja tietoja ei voitu poistaa. Siivous keskeytettiin.";
+"settingsviews_cleanDataDays" = "%d päivää";
+"settingsviews_nightscoutImportCompleted" = "Nightscout-tuonti valmis";
+"settingsviews_nightscoutImportSummary" = "Tuonnin yhteenveto";
+"settingsviews_nightscoutImportURLMissing" = "Nightscout-URL-osoitetta ei ole määritetty";
+"settingsviews_nightscoutImportConfigureURL" = "Määritä Nightscout-URL Nightscout-asetuksissa ennen tietojen tuontia.";
+"settingsviews_nightscoutImportDownloaded" = "Ladattu";
+"settingsviews_nightscoutImportAdded" = "Lisätty";
+"settingsviews_nightscoutImportSkipped" = "Ohitettu";
+"settingsviews_nightscoutImportInvalid" = "Virheellinen";
+"settingsviews_nightscoutImportSummaryFooter" = "Paikallisesti jo tallennetut tietueet ohitettiin. Virheellisiä Nightscout-asiakirjoja ei tuotu.";
+"settingsviews_nightscoutImportingData" = "Tuodaan tietoja";
+"settingsviews_cleanDataConfirmationCode" = "Vahvistuskoodi %@";
+"settingsviews_backupCreate" = "Luo varmuuskopio";
+"settingsviews_backupRestore" = "Palauta varmuuskopio";
+"settingsviews_backupCreated" = "Varmuuskopio luotu onnistuneesti";
+"settingsviews_backupRestored" = "Varmuuskopio palautettu onnistuneesti";
+"settingsviews_backupReplaceQuestion" = "Korvataanko olemassa olevat tiedot?";
+"settingsviews_backupReplaceData" = "Vaihda tiedot";
+"settingsviews_backupReplaceWarning" = "Olemassa olevat VS-lukemat ja hoidot varmuuskopioinnin aikavälillä poistetaan ennen varmuuskopion palauttamista.";
+"settingsviews_backupAndRestore" = "Varmuuskopiointi ja palautus";
+"settingsviews_backupAppSettingsAndAlerts" = "Sovellusasetukset ja hälytykset";
+"settingsviews_backupEncrypt" = "Salaa varmuuskopio";
+"settingsviews_backupAccounts" = "Varmuuskopioi tilit";
+"settingsviews_backupConfirmPassword" = "Vahvista salasana";
+"settingsviews_backupPasswordProtection" = "Salasanasuojaus";
+"settingsviews_backupPasswordProtectionFooter" = "Salasanasuojauksen lisääminen mahdollistaa myös arkaluonteisia tietoja sisältävien tilien varmuuskopioimisen.";
+"settingsviews_backupAccountDetailsFooter" = "Tilitiedot voivat sisältää palvelimen URL-osoitteita, käyttäjätunnuksia, salasanoja ja käyttöoikeuksia.";
+"settingsviews_backupCreateAndShare" = "Luo ja jaa varmuuskopio";
+"settingsviews_backupEncryptedCreationFooter" = "Salattujen varmuuskopioiden luominen kestää kauemmin. Pidä sovellus auki ja ole kärsivällinen.";
+"settingsviews_backupCreatedAt" = "Luotu";
+"settingsviews_backupEarliestData" = "Varhaisimmat tiedot";
+"settingsviews_backupSettingsAndAlerts" = "Asetukset ja hälytykset";
+"settingsviews_backupAccountDetails" = "Tilin tiedot";
+"settingsviews_backupIncluded" = "Mukana";
+"settingsviews_backupNotIncluded" = "Ei sisälly";
+"settingsviews_backupNotEnabled" = "Ei käytössä";
+"settingsviews_backupSummary" = "Varmuuskopion yhteenveto";
+"settingsviews_backupChooseFile" = "Valitse Varmuuskopiotiedosto";
+"settingsviews_backupFile" = "Varmuuskopiotiedosto";
+"settingsviews_backupFileCheckFooter" = "Varmuuskopio tarkistetaan ennen kuin olemassa olevia tietoja muutetaan.";
+"settingsviews_backupSelected" = "Valittu varmuuskopio";
+"settingsviews_backupPasswordRequired" = "Pakollinen";
+"settingsviews_backupUnlock" = "Avaa varmuuskopiointi";
+"settingsviews_backupEncryptedNotice" = "Tämä varmuuskopio on salattu ja se on avattava.";
+"settingsviews_backupSettings" = "Asetukset";
+"settingsviews_backupRestoreOptions" = "Palautusasetukset";
+"settingsviews_backupDataHandling" = "Tietojen käsittely";
+"settingsviews_backupKeepCurrentData" = "Säilytä nykyiset tiedot";
+"settingsviews_backupFillGaps" = "Täytä aukot";
+"settingsviews_backupReplaceRange" = "Vaihda Backup Range";
+"settingsviews_backupIgnoreData" = "Ohita tiedot";
+"settingsviews_backupRestoreSettingsAndAlerts" = "Palauta sovellusasetukset ja hälytykset";
+"settingsviews_backupRestoreAccounts" = "Palauta tilit";
+"settingsviews_backupReplaceAndRestore" = "Vaihda ja palauta";
+"settingsviews_backupRestoreSummary" = "Palauta yhteenveto";
+"settingsviews_backupBgReadingsAppliedFrom" = "BG-lukemat sovellettu alkaen";
+"settingsviews_backupBgReadingsAdded" = "BG-lukemat lisätty";
+"settingsviews_backupBgReadingsSkipped" = "BG-lukemat ohitettu";
+"settingsviews_backupTreatmentsAdded" = "Hoidot lisätty";
+"settingsviews_backupTreatmentsSkipped" = "Hoidot ohitettu";
+"settingsviews_backupSettingsRestored" = "Asetukset palautettu";
+"settingsviews_backupAccountRestore" = "Tilin palautus";
+"settingsviews_backupCreatingEncryptedStatus" = "Varmuuskopion luominen ja salaus turvallisesti…\nOle kärsivällinen.";
+"settingsviews_backupCreatingStatus" = "Luodaan varmuuskopiota…";
+"settingsviews_backupCheckingStatus" = "Tarkistetaan varmuuskopiota…";
+"settingsviews_backupDecryptingStatus" = "Varmuuskopion salausta puretaan ja tarkistetaan…\nOle kärsivällinen.";
+"settingsviews_backupRestoringEncryptedStatus" = "Palautetaan salattua varmuuskopiota…\nOle kärsivällinen.";
+"settingsviews_backupRestoringStatus" = "Palautetaan varmuuskopiota…";
+"settingsviews_backupErrorInvalidFile" = "Tämä ei ole kelvollinen sovelluksen varmuuskopio.";
+"settingsviews_backupErrorIncorrectPassword" = "Salasana on väärä tai suojattu varmuuskopio on vahingoittunut.";
+"settingsviews_backupErrorMissingPassword" = "Anna salasana, jota käytetään tämän varmuuskopion suojaamiseen.";
+"settingsviews_nightscoutImportQuestion" = "Tuonti Nightscoutista?";
+"settingsviews_nightscoutImportAction" = "Tuo Nightscoutista";
+"settingsviews_nightscoutImportDiscardQuestion" = "Hylätäänkö tallennettu tuonti?";
+"settingsviews_nightscoutImportDiscard" = "Hylkää tuonti";
+"settingsviews_nightscoutImportDiscardSaved" = "Hylkää tallennettu tuonti";
+"settingsviews_nightscoutImportDiscardMessage" = "Tallennettu edistyminen poistetaan. Tuodut tiedot säilyvät turvallisesti tallennettuina ja ohitetaan, jos aloitat uudelleen.";
+"settingsviews_nightscoutImportDataToImport" = "Tuotavat tiedot";
+"settingsviews_nightscoutImportPeriod" = "Tuontijakso";
+"settingsviews_nightscoutImportExistingDataFooter" = "Olemassa olevat paikalliset tiedot säilytetään. VS-lukemat 30 sekunnin sisällä olemassa olevasta lukemasta ja Nightscoutin jo tunnistamat hoidot ohitetaan.";
+"settingsviews_nightscoutImportKeepOpenFooter" = "Pidä sovellus auki, kunnes tuonti on valmis. Edistyminen tallennetaan jokaisen valmiin erän jälkeen, joten keskeytettyä tuontia voidaan jatkaa.";
+"settingsviews_nightscoutImportPeriodLabel" = "Kausi";
+"settingsviews_nightscoutImportCompletedBatches" = "Valmiit erät";
+"settingsviews_nightscoutImportResume" = "Jatka tuontia";
+"settingsviews_nightscoutImportSaved" = "Tallennettu tuonti";
+"settingsviews_nightscoutImportUnsupportedFooter" = "Tämä tuonti käyttää jaksoa, jota ei tueta. Hylkää se aloittaaksesi uudelleen.";
+"settingsviews_nightscoutImportExceedsRetentionFooter" = "Tämä tuonti ylittää nykyisen säilytysjaksosi. Hylkää se aloittaaksesi uudelleen.";
+"settingsviews_nightscoutImportResumeFooter" = "Edellinen tuonti lopetettiin ennen kuin kaikki pyydetyt erät valmistuivat. Jatkaminen jatkuu viimeisestä tallennetusta tarkistuspisteestä.";
+"settingsviews_nightscoutImportPause" = "Keskeytä tuonti";
+"settingsviews_nightscoutImportBgAndTreatments" = "VS-lukemat ja hoidot";
+"settingsviews_nightscoutImportBgOnly" = "BG-lukemat";
+"settingsviews_nightscoutImportTreatmentsOnly" = "hoidot";
+"settingsviews_nightscoutImportKeepAppOpen" = "Pidä sovellus auki.";
+"settingsviews_nightscoutImportPaused" = "Tuonti keskeytetty";
+"settingsviews_nightscoutImportErrorNoSelection" = "Valitse VS-lukemat, hoidot tai molemmat.";
+"settingsviews_nightscoutImportErrorUnsupportedPeriod" = "Tallennetussa tuonnissa käytetään ajanjaksoa, jota ei enää tueta. Hävitä se ja aloita uudelleen.";
+"settingsviews_nightscoutImportErrorRetention" = "Valittu tuontijakso ylittää nykyisen tietojen säilytysasetuksen.";
+"settingsviews_nightscoutImportErrorMissingURL" = "Anna Nightscoutin URL-osoite Nightscoutin asetuksiin ennen tuonnin aloittamista.";
+"settingsviews_nightscoutImportErrorInvalidURL" = "Määritetty Nightscout-URL-osoite ei kelpaa. Tarkista se Nightscoutin asetuksista ja yritä uudelleen.";
+"settingsviews_nightscoutImportErrorCheckpointUnavailable" = "Tallennettua Nightscout-tuontia ei voi enää jatkaa. Aloita uusi tuonti.";
+"settingsviews_nightscoutImportErrorSiteChanged" = "Määritetty Nightscout-sivusto on muuttunut tämän tuonnin alkamisen jälkeen. Hylkää tallennettu tuonti tai palauta edellinen Nightscout-URL-osoite.";
+"settingsviews_nightscoutImportErrorAuthentication" = "Nightscout esti pääsyn. Tarkista API-salaisuus tai käyttöoikeustunnus Nightscoutin asetuksista.";
+"settingsviews_nightscoutImportErrorEndpoint" = "Nightscout-datapäätepistettä ei löytynyt. Tarkista määritetty URL-osoite ja sivuston versio.";
+"settingsviews_nightscoutImportErrorRateLimited" = "Nightscout saa liian monta pyyntöä. Odota hetki ja jatka tuontia.";
+"settingsviews_nightscoutImportErrorInvalidResponse" = "Nightscout palautti tiedot, joita ei voitu lukea turvallisesti. Tietoja ei tuotu kyseisestä erästä.";
+"settingsviews_nightscoutImportErrorResponseLimit" = "Nightscout-erä jäi liian suureksi sen jälkeen, kun se oli jaettu pieniin aikaväleihin. Katkaistuja tietoja ei tuotu.";
+"settingsviews_backupCreatedWithAppVersion" = "Varmuuskopio luotu sovelluksen versiolla %@.";
+"settingsviews_backupErrorUnsupportedVersion" = "Tämä sovelluksen versio ei tue varmuuskopiomuotoversiota %d.";
+"settingsviews_backupErrorFinalValueMismatch" = "Tallennetut glukoosiarvot eivät toista varmuuskopioitua lopullista arvoa %@ luettaessa.";
+"settingsviews_nightscoutImportBatchCount" = "%1$d/%2$d";
+"settingsviews_nightscoutImportBgAddedProgress" = "Lisätty VS-lukemat: %@";
+"settingsviews_nightscoutImportTreatmentsAddedProgress" = "Hoidot lisätty: %@";
+"settingsviews_nightscoutImportConfirmation" = "Tuodaanko paikan %1$d viimeiset päivät paikasta %2$@? Nykyiset paikalliset tiedot säilytetään ja kaksoiskappaleet ohitetaan.";
+"settingsviews_nightscoutImportBatchProgress" = "Erä %1$d/%2$d";
+"settingsviews_nightscoutImportErrorServer" = "Nightscout palautti väliaikaisen palvelinvirheen (HTTP %d). Jatka tuontia myöhemmin.";
+"settingsviews_nightscoutImportErrorUnexpectedStatus" = "Nightscout palautti odottamattoman vastauksen (HTTP %d).";
+"sensorNoiseSensitivity" = "Sensor Sensitivity";
+"sensorNoiseSensitivitySensitive" = "Sensitive";
+"sensorNoiseSensitivityNormal" = "Normal";
+"sensorNoiseSensitivityPermissive" = "Permissive";

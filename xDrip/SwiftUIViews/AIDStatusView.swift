@@ -57,7 +57,7 @@ struct AIDStatusView: View {
         let profile = nightscoutSyncManager.profile
         let deviceStatus = nightscoutSyncManager.deviceStatus
         
-        NavigationView {
+        NavigationStack {
             VStack {
                 // show a nice colourful header to represent the AID system being followed and the status.
                 VStack(alignment: .leading, spacing: 6) {
@@ -93,7 +93,8 @@ struct AIDStatusView: View {
                         }
                     }
                     .padding(EdgeInsets(top: 10, leading: 15, bottom: 10, trailing: 15))
-                    .background(deviceStatus.deviceStatusBannerBackgroundColor()).clipShape(RoundedRectangle(cornerRadius: 10))
+                    .background(deviceStatus.deviceStatusBannerBackgroundColor())
+                    .clipShape(RoundedRectangle(cornerRadius: ConstantsHomeView.standardCornerRadius))
                 }
                 .padding(EdgeInsets(top: 8, leading: 18, bottom: 10, trailing: 18))
                 
@@ -271,7 +272,7 @@ struct AIDStatusView: View {
                             }
                         }
                         
-                        // TODO: DEBUG
+                        // Diagnostic timestamps
                         Section(header: Text("Debug")) {
                             row(title: "Last Nightscout check", data: deviceStatus.lastCheckedDate.formatted(date: .omitted, time: .standard))
                             row(title: "Last device status update", data: deviceStatus.updatedDate.formatted(date: .omitted, time: .standard))
@@ -354,7 +355,10 @@ struct AIDStatusView: View {
                     }
                 }
             }
+            .background(ConstantsAppColors.groupedBackground.ignoresSafeArea())
             .navigationTitle("Follow Status")
+            .toolbarBackground(ConstantsAppColors.groupedBackground, for: .navigationBar)
+            .toolbarBackground(.visible, for: .navigationBar)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button(Texts_Common.Cancel, action: {
